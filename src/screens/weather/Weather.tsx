@@ -4,13 +4,16 @@ import { TextField } from "@mui/material";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 
-
+interface IData{
+  location :string,
+  current:string
+}
 
 export const Weather: React.FC = () => {
   // const [lat ,setLat  ] = useState<ILocation>();
   // const [long , setLong]=useState<ILocation>()
   let date = new Date().toString();
-    const [data , setData] =useState<string[]>([])
+    const [data , setData] =useState<any>([])
     console.log(data , 'datatatatat')
     // for (const k in data) {
     //   const v = data[k];
@@ -35,7 +38,7 @@ useEffect(()=>{
 
 if(data) {
   console.log(data ,'datatatataat')
-  console.log(data['location' as any],'----')
+  console.log(data.location.name ,'dsgdscg')
 }
   return (
     <div className="weather">
