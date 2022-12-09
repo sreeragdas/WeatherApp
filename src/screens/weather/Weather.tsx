@@ -4,10 +4,7 @@ import { TextField } from "@mui/material";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 
-interface IData{
-  location :string,
-  current:string
-}
+
 
 export const Weather: React.FC = () => {
   // const [lat ,setLat  ] = useState<ILocation>();
