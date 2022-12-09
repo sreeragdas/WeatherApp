@@ -1,0 +1,31 @@
+div.weather{
+display: flex;
+justify-content: center;
+    div.border{
+        margin-top: 50px;
+        border: 1px solid red;
+        width: 50%;
+        max-width: 50%;
+        border-radius: 5px;
+
+        div.search-location{
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            div.icons{
+                height: 50%;
+            }
+            div.temp-far{
+                margin-top: 10px;
+
+            }
+        }
+        div.date-time{
+            text-align: center;
+        }
+       
+    }
+
+}
