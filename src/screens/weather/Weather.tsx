@@ -34,7 +34,7 @@ export const Weather: React.FC = () => {
   let date = new Date().toString();
     const [data , setData] =useState<IDetails >();
     const [location , setLocation]=useState<ILocation>();
-const [img , setImg]=useState<any>('')
+
 
 // useEffect(()=>{navigator.geolocation.getCurrentPosition((position)=>{setLat(position.coords.latitude as unknown as ILocation) ; setLong(position.coords.longitude as unknown as ILocation)
 //     const getData=()=>{
@@ -91,7 +91,7 @@ useEffect(()=>{
    <div>text:{data.condition.text}</div>
  
    <div><img src={`https:${data.condition.icon}`} alt={data.condition.text} /></div>
-   <div>{data.condition.img} </div>
+   <div>{data.condition.icon} </div>
     <div>humidity:{data.humidity}</div>
     <div>Last Updated : {data.last_updated}</div>
     
