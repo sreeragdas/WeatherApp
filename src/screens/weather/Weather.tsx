@@ -3,40 +3,57 @@ import AddLocationIcon from "@mui/icons-material/AddLocation";
 import { TextField } from "@mui/material";
 import axios from 'axios';
 import { useEffect, useState } from "react";
+interface IDetails{
+
+
+    condition: string[],
+    last_updated: string;
+    humidity:string;
+    feelslike_c:string;
+    feelslike_f:string;
+
+  
+  
+
+}
+interface ILocation{
+
+    country:string;
+    region:string;
+    tz_id:string;
+  
+}
 
 
 
 export const Weather: React.FC = () => {
-  // const [lat ,setLat  ] = useState<ILocation>();
-  // const [long , setLong]=useState<ILocation>()
+
   let date = new Date().toString();
-    const [data , setData] =useState<any>([])
-    console.log(data , 'datatatatat')
-    // for (const k in data) {
-    //   const v = data[k];
-    //         console.log(v ,'itetetetetetetetetet')
-    // }
-   
-   
+    const [data , setData] =useState<IDetails >()
+
 // useEffect(()=>{navigator.geolocation.getCurrentPosition((position)=>{setLat(position.coords.latitude as unknown as ILocation) ; setLong(position.coords.longitude as unknown as ILocation)
 //     const getData=()=>{
-//      axios.get(`http://api.weatherapi.com/v1/current.json?key=690a103c6fde42f7b49100151220912&q=Tamil Nadu&aqi=no`).then((response)=>{setData(response.data)})
+//      axios.get(`http://api.weatherapi.com/v1/current.json?key=690a103c6fde42f7b49100151220912&q=Tamil Nadu&aqi=no`).then((response)=>{setData(response.data.data)})
     
 //     }
 //     getData()
 // })},[lat  , long])
+
+
 useEffect(()=>{
-  const getData=()=>{
-    axios.get(`http://api.weatherapi.com/v1/current.json?key=690a103c6fde42f7b49100151220912&q=Tamil Nadu&aqi=no`).then((response)=>{setData(response.data)})
+  const  getData=async()=>{
    
+   const response = await axios.get(
+    `http://api.weatherapi.com/v1/current.json?key=690a103c6fde42f7b49100151220912&q=Tamil Nadu&aqi=no`);
+    const data = response.data;
+    
+    setData(data.current)
    }
    getData()
 },[])
 
-if(data) {
-  console.log(data ,'datatatataat')
-  console.log(data.location.name ,'dsgdscg')
-}
+console.log( data , 'data from interface')
+
   return (
     <div className="weather">
       <div className="border">
@@ -60,9 +77,18 @@ if(data) {
 
 
         </div>
+
         <div>
-      
-     
+{
+  data ? (
+    <div> <div>Temperature :{data.feelslike_c}</div>
+    <div>humidity:{data.humidity}</div>
+    <div>Last Updated : {data.last_updated}</div>
+    
+    </div>
+
+  ) : null
+}
         </div>
       </div>
     </div>
