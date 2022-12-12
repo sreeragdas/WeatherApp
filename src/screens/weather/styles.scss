@@ -1,31 +1,79 @@
-div.weather{
-display: flex;
-justify-content: center;
-    div.border{
-        margin-top: 50px;
-        border: 1px solid red;
-        width: 50%;
-        max-width: 50%;
-        border-radius: 5px;
+div.weather {
+  display: flex;
+  justify-content: center;
+  div.border {
+    margin-top: 50px;
+    border: 1px solid red;
+    width: 50%;
+    max-width: 50%;
+    border-radius: 5px;
 
-        div.search-location{
-            margin-top: 10px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
+    div.search-location {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 10px;
 
-            div.icons{
-                height: 50%;
-            }
-            div.temp-far{
-                margin-top: 10px;
-
-            }
-        }
-        div.date-time{
-            text-align: center;
-        }
-       
+      div.icons {
+        height: 50%;
+      }
+      div.temp-far {
+        margin-top: 10px;
+      }
     }
+    div.date-time {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    div.paper-style {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+      div.weather-details {
+        div.converted {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 10px;
+          div.converter{
+            cursor: pointer;
+          }
+        }
+        div.location {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          margin-top: 10px;
+        }
 
+        div.temp {
+          font-size: 5rem;
+          text-align: center;
+        }
+
+        div.img {
+          text-align: center;
+          img {
+            height: 50%;
+          }
+        }
+
+        div.atmosphere-details {
+          display: flex;
+          flex-direction: row;
+          text-align: center;
+          justify-content: space-between;
+          margin-left: 10px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          div.title {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
 }
