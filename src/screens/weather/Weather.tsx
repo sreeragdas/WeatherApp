@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import Paper from "@mui/material/Paper";
+import { config } from "../../config";
 
 interface IDetails {
   condition: {
@@ -30,20 +31,14 @@ export const Weather: React.FC = () => {
   const [data, setData] = useState<IDetails>();
   const [location, setLocation] = useState<ILocation>();
   const [text, setText] = useState<string>("Tamil Nadu");
-  const [converter , setConverter]=useState(false)
+  const [converter, setConverter] = useState(false);
 
-  // useEffect(()=>{navigator.geolocation.getCurrentPosition((position)=>{setLat(position.coords.latitude as unknown as ILocation) ; setLong(position.coords.longitude as unknown as ILocation)
-  //     const getData=()=>{
-  //      axios.get(`http://api.weatherapi.com/v1/current.json?key=690a103c6fde42f7b49100151220912&q=Tamil Nadu&aqi=no`).then((response)=>{setData(response.data.data)})
-
-  //     }
-  //     getData()
-  // })},[lat  , long])
+ 
 
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(
-        `http://api.weatherapi.com/v1/current.json?key=690a103c6fde42f7b49100151220912&q=${text}&aqi=no`
+        `http://api.weatherapi.com/v1/current.json?key=${config.WEB_API_KEY}&q=${text}&aqi=no`
       );
       const data = response.data;
       setLocation(data.location);
@@ -86,12 +81,27 @@ export const Weather: React.FC = () => {
                   <div>{location?.region}</div>
                 </div>
                 <div className="converted">
-                  <div className="converter" onClick={(e)=>{setConverter(false)}}>C </div>
+                  <div
+                    className="converter"
+                    onClick={(e) => {
+                      setConverter(false);
+                    }}
+                  >
+                    C{" "}
+                  </div>
                   <div> |</div>
-                  <div className="converter" onClick={(e)=>{setConverter(true)}}>F</div>
-
+                  <div
+                    className="converter"
+                    onClick={(e) => {
+                      setConverter(true);
+                    }}
+                  >
+                    F
+                  </div>
                 </div>
-                <div className="temp">{ !converter ? data.feelslike_c : data.feelslike_f}</div>
+                <div className="temp">
+                  {!converter ? data.feelslike_c : data.feelslike_f}
+                </div>
                 <div style={{ textAlign: "center" }}>{data.condition.text}</div>
                 <div className="img">
                   <img

@@ -21,7 +21,10 @@
     "jsx": "react-jsx"
   },
   "browser": {
+    "os": false,
+    "path": false,
     "fs": false
   },
   "include": ["./src", "./server.ts", "./types"]
+  
 }
